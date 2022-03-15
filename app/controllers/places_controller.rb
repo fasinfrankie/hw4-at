@@ -8,17 +8,15 @@ class PlacesController < ApplicationController
   end
   end
 
-  def show
-    if @current_user
-      @place = Place.new(params["place"])
-    else
-      redirect_to "/sessions/new"
-    end
-  end
-
   def new
     @place = Place.new
   end
+
+  def show
+   @place = Place.find(params["id"])
+  # @post = Post.find(params["id"])
+  end
+
 
   def create
     if @current_user
