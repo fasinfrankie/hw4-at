@@ -17,7 +17,6 @@ class PlacesController < ApplicationController
   # @post = Post.find(params["id"])
   end
 
-
   def create
     if @current_user
     @place = Place.new(params["place"])

@@ -64,6 +64,9 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+    # indicate which service to use for attachments
+    config.active_storage.service = :local
+    
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
