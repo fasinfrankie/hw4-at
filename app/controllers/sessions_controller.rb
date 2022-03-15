@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
         flash[:notice] = "You logged in!"
         redirect_to "/places"
       else
+
         flash[:notice] = "Whoops, try again."
         redirect_to "/sessions/new"
       end
