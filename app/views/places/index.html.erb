@@ -14,6 +14,7 @@
  <p>   
 <h5 class="display-9 row gy-3"> Click on a place name below to read the posts or add a new post! </h5>
 <ul>
+
   <% for place in @places %>
     <li class="btn btn-succcess"><a href="/places/<%= place.id %>"><%= place.name %></a></li>
   <% end %>
