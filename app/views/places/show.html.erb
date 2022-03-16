@@ -1,33 +1,25 @@
-<h1>This is the <%= @place.name %> page</h1>
-<p>
-<p>
-<p>
-  <a href="/posts/new?place_id=<%= @place.id %>" class="btn btn-success">Create New Post</a>
-</p>
+<h1 class="row gy-3">This is the <%= @place.name %> page</h1>
 
-<p>
+  <a href="/posts/new?place_id=<%= @place.id %>" class="btn btn-success col-2 row gy-2 gx-1">Create New Post</a>
+
 <% if @current_user %>
-<h5>Here are the existing posts from <%= @place.name %>:</h5>
-<div class="row mb-5">
+<h5 class="row gy-5 gx-5">Here are the existing posts from <%= @place.name %>:</h5>
+
+<div class="row mb-2">
 <% for post in @place.posts.where({ user_id: @current_user.id}) %>
  
-<div class="col-md-3 col-sm-6">  
+  <p class="display-6 row gx-1"><%= post.title %></p>
+  <p class="h6 gx-3"><%= post.posted_on %></p>
+    </div>
+
+<div class="col-md-3 col-sm-6 row gx-1">  
       <% if post.uploaded_image.attached? %>
         <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
       <% else %>
         <img src="<%= post.image %>" class="img-fluid">
       <% end %>
-
-      <h4> 
-          <% if post.user %>
-          Posted by: <%= post.user.first_name %>
-        <% else %>
-          anonymous
-        <% end %>
-      </h4>
-      <p><%= post.title %></p>
     <p><%= post.description %></p>
-    </div>
+    
 
 <% end %>
 

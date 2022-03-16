@@ -1,13 +1,10 @@
 <% if @current_user %>
-<h2 class="display-6">Hi <%= @current_user.first_name %>! 
-<p>
-<p> Here is a list of places.</h2>
-<p>
-<h4 class="display-20">If you've been to one of the places listed below, click the place name to add a post about your trip.
-<p> 
-<p>
-<p>
-If you want to add a new place, click the "Add New Place" button below.</h4>
+<h2 class="display-5 row gy-3">Hi <%= @current_user.first_name %>!</h2>
+<h3 class="display-6 row gy-3">Here is a list of places.</h2>
+
+<h4 class="display-20 row gy-3">If you've been to one of the places listed below, click the place name to add a post about your trip.</h4>
+
+<h4 class="display-20 row gy-3">If you want to add a new place, click the "Add New Place" button below.</h4>
    <div>
         <a href="/places/new/" class="btn btn-success">Add New Place</a>
 
@@ -15,7 +12,7 @@ If you want to add a new place, click the "Add New Place" button below.</h4>
  <p>
  <p>
  <p>   
-<h5 class="display-9"> Click on a place name below to read the posts! </h5>
+<h5 class="display-9 row gy-3"> Click on a place name below to read the posts or add a new post! </h5>
 <ul>
   <% for place in @places %>
     <li class="btn btn-succcess"><a href="/places/<%= place.id %>"><%= place.name %></a></li>
