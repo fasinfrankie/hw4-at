@@ -1,5 +1,3 @@
-
-   
 <h1>This is the <%= @place.name %> page</h1>
 <p>
 <p>
@@ -7,17 +5,10 @@
   <a href="/posts/new?place_id=<%= @place.id %>" class="btn btn-success">Create New Post</a>
 </p>
 <p>
-
+<% if @current_user %>
 <h5>Here are the existing posts from <%= @place.name %>:</h5>
-<% for post in @place.posts %>
+<% for post in @place.posts.where({ user_id: @current_user.id}) %>
   <div class="col-md-3 col-sm-6">
-      <h4>
-        <% if post.user.id %>
-          Posted by: <%= post.user.first_name %>
-        <% else %>
-          anonymous
-        <% end %>
-      </h4>
 
       <% if post.uploaded_image.attached? %>
         <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
@@ -25,9 +16,21 @@
         <img src="<%= post.image %>" class="img-fluid">
       <% end %>
 
+      <h4> 
+           <% if post.user %>
+          Posted by: <%= post.user.first_name %>
+        <% else %>
+          anonymous
+        <% end %>
+      </h4>
+
+
       <p><%= post.title %></p>
       <p><%= post.description %></p>
     </div>
+<% end %>
+<% else %>
+Login to see your posts.
 <% end %>
 
 
